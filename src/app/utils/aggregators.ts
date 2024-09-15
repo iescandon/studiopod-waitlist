@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Event = mongoose.model('Event');
 
 export const getEventWithUserSessions = (eventId: string) => {
