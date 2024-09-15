@@ -6,11 +6,14 @@ export async function GET(request: NextRequest) {
   await dbConnect();
   try {
     const searchParams = request.nextUrl.searchParams;
-    const key = searchParams.keys().next().value;
-    if (!searchParams && !key) {
+    if (!searchParams) {
         return NextResponse.json({ error: 'Missing query search params' }, { status: 400 })
     };
-    const value = searchParams.get(key);
+    const key = searchParams.keys().next().value || '';
+    const value = searchParams.get(key) || '';
+    if (!key || !value) {
+      return NextResponse.json({ error: 'Missing query search params' }, { status: 400 })
+  };
     const user = await User.findOne({ [key]: value });
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
