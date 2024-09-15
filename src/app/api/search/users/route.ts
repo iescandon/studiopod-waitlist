@@ -6,10 +6,10 @@ export async function GET(request: NextRequest) {
   await dbConnect();
   try {
     const searchParams = request.nextUrl.searchParams;
-    if (!searchParams ) {
+    const key = searchParams.keys().next().value;
+    if (!searchParams && !key) {
         return NextResponse.json({ error: 'Missing query search params' }, { status: 400 })
     };
-    const key = searchParams.keys().next().value;
     const value = searchParams.get(key);
     const user = await User.findOne({ [key]: value });
     return NextResponse.json(user, { status: 200 });
