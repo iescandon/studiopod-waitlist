@@ -6,10 +6,10 @@ export interface Session extends mongoose.Document {
     eventId: string;
     userId: string;
     status: string;
-    checkInTime?: Date;
-    skippedTime?: Date;
-    entryTime?: Date;
-    exitTime?: Date;
+    checkInTime?: string;
+    skippedTime?: string;
+    entryTime?: string;
+    exitTime?: string;
 }
 
 const SessionSchema = new mongoose.Schema<Session>({
@@ -37,18 +37,22 @@ const SessionSchema = new mongoose.Schema<Session>({
         required: true
     },
     checkInTime: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        default: () => new Date().toISOString(),
         required: true,
+        match: [/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/, 'Enter a valid date in ISO string format'],
     },
     skippedTime: {
-        type: Date,
+        type: String,
+        match: [/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/, 'Enter a valid date in ISO string format'],
     },
     entryTime: { 
-        type: Date,
+        type: String,
+        match: [/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/, 'Enter a valid date in ISO string format'],
     },
     exitTime: {
-        type: Date,
+        type: String,
+        match: [/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/, 'Enter a valid date in ISO string format'],
     },
 });
 

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 export interface Event extends mongoose.Document {
   _id: string;
   name: string;
-  date: Date;
+  date: string;
   sessionIds: string | undefined[];
 }
 
@@ -20,9 +20,10 @@ const EventSchema = new mongoose.Schema<Event>({
     message: "Name is a required field"
   },
   date:  { 
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: () => new Date().toISOString(),
     required: true,
+    match: [/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/, 'Enter a valid date in ISO string format'],
   },
   sessionIds: {
     type: [String],
