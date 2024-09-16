@@ -1,12 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from 'uuid';
-
-export interface Event extends mongoose.Document {
-  _id: string;
-  name: string;
-  date: string;
-  sessionIds: string | undefined[];
-}
+import { Event } from "@/app/types";
 
 const EventSchema = new mongoose.Schema<Event>({
   _id: {

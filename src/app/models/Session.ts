@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from 'uuid';
-
-export interface Session extends mongoose.Document {
-    _id: string;
-    eventId: string;
-    userId: string;
-    status: string;
-    checkInTime?: string;
-    skippedTime?: string;
-    entryTime?: string;
-    exitTime?: string;
-}
+import { Session } from "@/app/types";
 
 const SessionSchema = new mongoose.Schema<Session>({
     _id: {
@@ -32,7 +22,7 @@ const SessionSchema = new mongoose.Schema<Session>({
     },
     status: {
         type: String,
-        enum: ['waiting', 'skipped', 'completed', "in_studio"],
+        enum: ['waiting', 'skipped', 'completed'],
         default: 'waiting',
         required: true
     },

@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   await dbConnect();
   try {
-    const events = await Event.find({});
+    const events = await Event.find({}).sort({date: 'desc'}).exec();
     return NextResponse.json(events, { status: 200 });
   } catch (error) {
     if (error instanceof Error) {
