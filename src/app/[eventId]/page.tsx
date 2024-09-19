@@ -11,17 +11,18 @@ export async function generateStaticParams() {
 }
 
 export default async function EventDetails({ params }: { params: { eventId: string } }) {
-const event: AggEvent = await getEventWithUserSessions(params.eventId);
-console.log(event);
+  // const event: AggEvent = await getEventWithUserSessions(params.eventId);
+  // console.log(event);
   return (
     <main>
-      <h1>{event.name}</h1>
-      <p>{event.date}</p>
-      <ul>
-      {event?.waiting?.map((session: AggSession) => (
-          <li key={session._id}>{session.user.name}</li>
-      ))}
-    </ul>
+      EVENT DETAILS
+        {/* <h1>{event.name}</h1>
+        <p>{event.date}</p>
+        <ul>
+        {event?.waiting?.map((session: AggSession) => (
+            <li key={session._id}>{session.user.name}</li>
+        ))}
+        </ul> */}
     </main>
   )
 }
