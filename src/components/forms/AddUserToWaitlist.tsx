@@ -25,7 +25,7 @@ function SubmitButton({ isDisabled }: SubmitButtonProps) {
 
   return (
     <LoadingButton sx={{ marginTop: "1rem", fontWeight: 700 }} type="submit" variant="contained" loading={pending} disabled={isDisabled} className="w-[160px]">
-      Let's go!
+      Let&apos;s go!
     </LoadingButton>
   );
 }

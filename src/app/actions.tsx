@@ -48,7 +48,7 @@ export async function createUserSession(
       const data = parse.data;
   try {
     let user: User;
-    let userResponse: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/search/users?phone=${data.phone}`);
+    const userResponse: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/search/users?phone=${data.phone}`);
     if (userResponse.data) {
         user = userResponse.data;
     } else {

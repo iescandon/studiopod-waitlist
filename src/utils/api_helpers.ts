@@ -19,26 +19,6 @@ export const getEventWithUserSessions = async (eventId: string) => {
     return event;
 };
 
-export const createUserSession = async (eventId: string, newUser: UserRequest) => {
-    let user: User;
-    let userResponse: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/search/users?phone=${newUser.phone}`);
-    if (userResponse.data) {
-        user = userResponse.data;
-    } else {
-        const newUserResponse: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/users`, newUser);
-        user = newUserResponse.data;
-    }
-    const sessionResponse: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions`, {
-        userId: user._id,
-        eventId: eventId,
-    });
-    const eventResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}/sessions`, {
-        sessionId: sessionResponse.data._id,
-    });
-    console.log('eventResponse', eventResponse)
-    return user;
-};
-
 const generateUpdateSessionRequest = (updateReason: UpdateSessionReason) => {
     let session;
     switch(updateReason) {
