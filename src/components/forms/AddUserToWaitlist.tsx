@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import { useFormStatus, useFormState } from "react-dom";
 import { createUserSession } from "@/app/actions";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { PhoneInput, NameInput } from "../inputs";
+import Link from "next/link";
 
 interface SubmitButtonProps {
   isDisabled: boolean,
@@ -73,10 +74,17 @@ export function AddUserToWaitlistForm({ eventId }: AddUserToWaitlistFormProps) {
        <SubmitButton isDisabled={!isValidName || !isValidPhone || name === "" || phone === ""} />
     </form>
     </>
-    : <div>
-      <p>{state.message}</p>
+    : <div className="text-center space-y-4">
+      <Typography component="div" variant="h5">{state.message}</Typography>
       {
-        state.statusCode !== 201 && <Button onClick={resetForm}>Reset Form</Button>
+        state.statusCode === 201 ? 
+        <Link href={`/${eventId}`}>
+        <Typography
+        className="font-extrabold underline"
+        variant="subtitle1"
+        component="div"
+        sx={{ color: '#d4ac7c' }}>View waitlist here</Typography></Link> : <Button onClick={resetForm}>Reset Form</Button>
+        
       }
     </div>
   }

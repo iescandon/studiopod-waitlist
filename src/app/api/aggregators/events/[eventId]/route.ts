@@ -18,6 +18,7 @@ const getEventWithUserSessions = (eventId: string) => {
         name: 1,
         date: 1,
         logoUrl: 1,
+        accessCode: 1,
         sessionIdsNotEmpty: { $gt: [{ $size: "$sessionIds" }, 0] }, // Check if sessionIds array has elements
       }
     },
@@ -39,6 +40,7 @@ const getEventWithUserSessions = (eventId: string) => {
               name: { $first: "$name" },
               date: { $first: "$date" },
               logoUrl: { $first: "$logoUrl" },
+              accessCode: { $first: "accessCode" },
               waiting: {
                 $push: {
                   $cond: [
@@ -103,6 +105,7 @@ const getEventWithUserSessions = (eventId: string) => {
               name: 1,
               date: 1,
               logoUrl: 1,
+              accessCode: 1
             }
           },
           {
@@ -128,6 +131,7 @@ const getEventWithUserSessions = (eventId: string) => {
               name: 1,
               date: 1,
               logoUrl: 1,
+              accessCode: 1,
               waiting: { $literal: [] },
               completed: { $literal: [] },
               skipped: { $literal: [] }

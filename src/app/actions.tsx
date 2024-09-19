@@ -3,17 +3,7 @@ import { User } from "@/types";
 import axios, { AxiosResponse } from "axios";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
-
-function getFirstName(fullName: string) {
-  return fullName.split(' ')[0];
-}
-
-
-function formatPhoneNumber(phoneNumber: string) {
-    const cleanNumber = phoneNumber.slice(1);
-    const formattedNumber = cleanNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    return formattedNumber;
-}
+import { formatPhoneNumber, getFirstName } from "@/utils";
 
 export async function createUserSession(
   prevState: {
@@ -65,7 +55,7 @@ export async function createUserSession(
     revalidatePath(`/${data.eventId}`);
     const formattedNumber = formatPhoneNumber(data.phone);
     const firstName = getFirstName(data.name);
-    return { message: `Thanks ${firstName}! You're on the waitlist. We'll send you a text at ${formattedNumber} when you're up next!`, statusCode: 201 };
+    return { message: `Thanks ${firstName}! You're on the waitlist. We'll send you a text when you're up next!`, statusCode: 201 };
   } catch (e) {
     return { message: "Ooof this is embarassing. Something went wrong. Please reset the form and try again.", statusCode: 500 };
   }

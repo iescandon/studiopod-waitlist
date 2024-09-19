@@ -18,6 +18,11 @@ const EventSchema = new mongoose.Schema<Event>({
     required: true,
     message: "Logo URL is a required field"
   },
+  accessCode: {
+    type: String,
+    required: true,
+    message: "Access Code is a required field"
+  },
   date:  { 
     type: String,
     default: () => new Date().toISOString(),
