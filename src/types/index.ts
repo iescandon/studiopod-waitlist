@@ -1,8 +1,11 @@
-export interface User {
+export interface UserRequest {
+  name: string;
+  phone: string;
+  email?: string;
+};
+
+export interface User extends UserRequest {
     _id: string;
-    name: string;
-    phone: string;
-    email?: string;
   };
   
   export interface Session {
@@ -19,8 +22,16 @@ export interface User {
   export interface Event {
     _id: string;
     name: string;
+    logoUrl: string;
     date: string;
     sessionIds: string | undefined[];
+  };
+
+  export interface TextbeltResponseType {
+    success: boolean,
+    quotaRemaining?: number,
+    textId?: string,
+    error?: string,
   };
   
   export enum StatusType {

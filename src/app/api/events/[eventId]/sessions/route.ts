@@ -1,5 +1,5 @@
-import { dbConnect } from "@/app/lib";
-import Event from "@/app/models/Event";
+import { dbConnect } from "@/lib";
+import Event from "@/models/Event";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = {

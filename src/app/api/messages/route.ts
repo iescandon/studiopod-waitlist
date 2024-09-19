@@ -1,3 +1,7 @@
+// export const config = {
+//   runtime: 'edge'
+// }
+
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from 'uuid';
-import { Session } from "@/app/types";
+import { Session } from "@/types";
 
 const SessionSchema = new mongoose.Schema<Session>({
     _id: {

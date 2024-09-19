@@ -1,28 +1,42 @@
-import axios from "axios";
-import { User, Event, Session, UpdateSessionReason, SendMessageReason, StatusType } from "@/app/types";
+import axios, { AxiosResponse } from "axios";
+import { UserRequest, Event, Session, UpdateSessionReason, SendMessageReason, StatusType, TextbeltResponseType, User } from "@/types";
 
 export const getEvents = async () => {
-  const events: Event[] = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/events`);
+  const response: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/events`);
+  const events: Event[] = response.data;
   return events;
 }
 
+export const getEventById = async (eventId: string) => {
+  const response: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}`);
+  const event: Event = response.data;
+  return event;
+};
+
 export const getEventWithUserSessions = async (eventId: string) => {
-    const event: Event = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}`);
+    const response: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/aggregators/events/${eventId}`);
+    const event: Event = response.data;
     return event;
 };
 
-export const createUserSession = async (eventId: string, newUser: User) => {
-    let user: User = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/search/users?phone=${newUser.phone}`);
-    if (!user) {
-        user = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/users`, newUser);
-    };
-    const session: Session = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions`, {
+export const createUserSession = async (eventId: string, newUser: UserRequest) => {
+    let user: User;
+    let userResponse: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/search/users?phone=${newUser.phone}`);
+    if (userResponse.data) {
+        user = userResponse.data;
+    } else {
+        const newUserResponse: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/users`, newUser);
+        user = newUserResponse.data;
+    }
+    const sessionResponse: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions`, {
         userId: user._id,
         eventId: eventId,
     });
-    await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}/sessions`, {
-        sessionId: session._id,
+    const eventResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}/sessions`, {
+        sessionId: sessionResponse.data._id,
     });
+    console.log('eventResponse', eventResponse)
+    return user;
 };
 
 const generateUpdateSessionRequest = (updateReason: UpdateSessionReason) => {
@@ -65,7 +79,8 @@ export const updateSession = async (sessionId: string, updateReason: UpdateSessi
         // throw err?
         return;
     };
-    const session: Session = await axios.patch(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`, request);
+    const response: AxiosResponse = await axios.patch(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`, request);
+    const session: Session = response.data;
     return session;
 };
 
@@ -90,9 +105,10 @@ export const sendSMSMessage = async (phone: string, messageReason: SendMessageRe
     // throw err?
     return;
   }
-  const result = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/messages`, {
+  const response: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/messages`, {
     phone,
     message,
   });
-  return result;
+  const textbeltResponse: TextbeltResponseType = response.data;
+  return textbeltResponse;
 };

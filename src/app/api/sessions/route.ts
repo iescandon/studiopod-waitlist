@@ -1,6 +1,6 @@
-import { dbConnect } from "@/app/lib";
-import Session from "@/app/models/Session";
-import { Session as SessionType } from "@/app/types";
+import { dbConnect } from "@/lib";
+import Session from "@/models/Session";
+import { Session as SessionType } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {

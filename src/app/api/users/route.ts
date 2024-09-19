@@ -1,6 +1,6 @@
-import { dbConnect } from "@/app/lib";
-import User from "@/app/models/User";
-import { NextRequest, NextResponse } from "next/server";
+import { dbConnect } from "@/lib";
+import User from "@/models/User";
+import { NextRequest, NextResponse } from "next/server"; 
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
   await dbConnect();
   try {
     const body = await request.json();
+    // FIXME: remove + sign?
     const user = await User.create(body);
     return NextResponse.json(user, { status: 201 });
   } catch (error) {

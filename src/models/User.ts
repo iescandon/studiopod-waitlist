@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from 'uuid';
-import { User } from "@/app/types";
+import { User } from "@/types";
 
 const UserSchema = new mongoose.Schema<User>({
     _id: {
@@ -17,14 +17,15 @@ const UserSchema = new mongoose.Schema<User>({
         type: String, 
         required: true,
         unique: true,
-        match: [/\d{10}/, 'Enter a valid phone number'],
+        match: [/^[1-9]\d{1,14}$/, 'Enter a valid phone number'],
+        // match: [/^\+?[1-9]\d{1,14}$/, 'Enter a valid phone number'],
         message: "Phone is a required field"
     },
     email: {
         type: String,
         unique: true,
+        sparse: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Enter a valid email address'],
-        message: "Email is a required field"
 
     }
 });

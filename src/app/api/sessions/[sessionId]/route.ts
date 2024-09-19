@@ -1,5 +1,5 @@
-import { dbConnect } from "@/app/lib";
-import Session from "@/app/models/Session";
+import { dbConnect } from "@/lib";
+import Session from "@/models/Session";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = {

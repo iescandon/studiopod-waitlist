@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from 'uuid';
-import { Event } from "@/app/types";
+import { Event } from "@/types";
 
 const EventSchema = new mongoose.Schema<Event>({
   _id: {
@@ -12,6 +12,11 @@ const EventSchema = new mongoose.Schema<Event>({
     type: String,
     required: true,
     message: "Name is a required field"
+  },
+  logoUrl: {
+    type: String,
+    required: true,
+    message: "Logo URL is a required field"
   },
   date:  { 
     type: String,
