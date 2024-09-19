@@ -68,7 +68,7 @@ const generateSMSMessageBody = (messageReason: SendMessageReason) => {
   let message;
   switch(messageReason) {
       case SendMessageReason.Skipped:
-        message = 'Sorry you couldn\'t make it! Come see the attendant if you want to get moved back to the waiting list. -The Studio Pod';
+        message = 'Sorry you couldn\'t make it! We\'ve removed you from the waiting list. If you still want a headshot, feel free to scan the code to join the waiting list again.  -The Studio Pod';
         break;
       case SendMessageReason.UpNext:
         message = 'Head on over to the studio! You\'re up next. -The Studio Pod';
@@ -92,3 +92,39 @@ export const sendSMSMessage = async (phone: string, messageReason: SendMessageRe
   const textbeltResponse: TextbeltResponseType = response.data;
   return textbeltResponse;
 };
+
+export const removeUserSession = async (sessionId: string, phoneNumber:string, eventId: string) => {
+  await sendSMSMessage(phoneNumber, SendMessageReason.Skipped);
+  const eventSessionResponse: AxiosResponse = await axios.delete(`${process.env.NEXT_PUBLIC_APP_URL}/api/events/${eventId}/sessions/${sessionId}`);
+  const sessionResponse: AxiosResponse = await axios.delete(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`);
+  const result: Event = sessionResponse.data;
+  return result;
+};
+
+export const notifyUser = async (sessionId: string, phoneNumber: string) => {
+  await sendSMSMessage(phoneNumber, SendMessageReason.UpNext);
+  console.log("notify user")
+  const response: AxiosResponse = await axios.patch(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`, {
+    notified: true,
+  });
+  const session: Session = response.data;
+  console.log("session", session);
+  return session;
+};
+
+export const completeUserSession = async (sessionId: string) => {
+  const response: AxiosResponse = await axios.patch(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`, {
+    status: StatusType.Completed,
+    exitTime: new Date().toISOString(),
+  });
+  const session: Session = response.data;
+  return session;
+}
+
+export const startUserSession = async (sessionId: string) => {
+  const response: AxiosResponse = await axios.patch(`${process.env.NEXT_PUBLIC_APP_URL}/api/sessions/${sessionId}`, {
+    entryTime: new Date().toISOString(),
+  });
+  const session: Session = response.data;
+  return session;
+}

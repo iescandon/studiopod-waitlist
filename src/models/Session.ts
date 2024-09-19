@@ -26,6 +26,11 @@ const SessionSchema = new mongoose.Schema<Session>({
         default: 'waiting',
         required: true
     },
+    notified: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     checkInTime: {
         type: String,
         default: () => new Date().toISOString(),

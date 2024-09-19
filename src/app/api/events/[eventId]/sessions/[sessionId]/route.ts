@@ -4,19 +4,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 type Params = {
     eventId: string;
+    sessionId: string;
   }
 
-export async function POST(request: NextRequest, context: { params: Params }) {
+export async function DELETE(request: NextRequest, context: { params: Params }) {
   await dbConnect();
   try {
     const eventId = context.params.eventId;
-    const body = await request.json();
-    if (!body.sessionId) {
-      return NextResponse.json({ error: "Missing sessionId" }, { status: 400 });
-    };
+    const sessionId = context.params.sessionId;
     const message = await Event.updateOne(
         { _id: eventId },
-        { $push: { sessionIds: body.sessionId } }
+        { $pull: { sessionIds: sessionId } }
       );
     return NextResponse.json(message, { status: 201 });
   } catch (error) {

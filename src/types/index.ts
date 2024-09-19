@@ -13,6 +13,7 @@ export interface User extends UserRequest {
     eventId: string;
     userId: string;
     status: string;
+    notified: boolean;
     checkInTime?: string;
     skippedTime?: string;
     entryTime?: string;
@@ -31,6 +32,7 @@ export interface User extends UserRequest {
     _id: string;
     user: User;
     status: string;
+    notified: boolean;
     checkInTime?: string;
     skippedTime?: string;
     entryTime?: string;

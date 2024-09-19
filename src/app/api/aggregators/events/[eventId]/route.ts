@@ -46,6 +46,8 @@ const getEventWithUserSessions = (eventId: string) => {
                     {
                       _id: "$sessions._id",
                       user: "$sessions.user",
+                      status: "$sessions.status",
+                      notified: "$sessions.notified",
                       checkInTime: "$sessions.checkInTime",
                       skippedTime: "$sessions.skippedTime",
                       entryTime: "$sessions.entryTime",
@@ -62,6 +64,8 @@ const getEventWithUserSessions = (eventId: string) => {
                     {
                       _id: "$sessions._id",
                       user: "$sessions.user",
+                      status: "$sessions.status",
+                      notified: "$sessions.notified",
                       checkInTime: "$sessions.checkInTime",
                       skippedTime: "$sessions.skippedTime",
                       entryTime: "$sessions.entryTime",
@@ -78,6 +82,8 @@ const getEventWithUserSessions = (eventId: string) => {
                     {
                       _id: "$sessions._id",
                       user: "$sessions.user",
+                      status: "$sessions.status",
+                      notified: "$sessions.notified",
                       checkInTime: "$sessions.checkInTime",
                       skippedTime: "$sessions.skippedTime",
                       entryTime: "$sessions.entryTime",
