@@ -1,5 +1,6 @@
-import { getEvents, getEventWithUserSessions } from "@/utils";
-import { AggEvent, AggSession } from "@/types";
+import { getEventById, getEvents } from "@/utils";
+import { Event } from "@/types";
+import { QueueLists } from "@/components/lists";
 
 export const revalidate = 1;
 
@@ -11,16 +12,11 @@ export async function generateStaticParams() {
 }
 
 export default async function EventDetails({ params }: { params: { eventId: string } }) {
-  const event: AggEvent = await getEventWithUserSessions(params.eventId);
+  const event: Event = await getEventById(params.eventId);
   return (
-    <main>
-        <h1>{event.name}</h1>
-        <p>{event.date}</p>
-        <ul>
-        {event?.waiting?.map((session: AggSession) => (
-            <li key={session._id}>{session.user.name}</li>
-        ))}
-        </ul>
-    </main>
+    <div className="w-full flex flex-col justify-center items-center p-16">
+        <img src={event.logoUrl} alt="Studio Pod Logo" className="w-full md:max-w-[400px] lg:max-w-[500px] pb-16" />
+        <QueueLists eventId={params.eventId} />
+    </div>
   )
 }

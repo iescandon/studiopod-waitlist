@@ -1,5 +1,5 @@
 import { getEvents, getEventById } from "@/utils";
-import { AddUserToWaitlistForm } from "@/components";
+import { AddUserToWaitlistForm } from "@/components/forms";
 
 export async function generateStaticParams() {
   const events = await getEvents();
