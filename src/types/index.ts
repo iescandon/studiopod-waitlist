@@ -27,6 +27,26 @@ export interface User extends UserRequest {
     sessionIds: string | undefined[];
   };
 
+  export interface AggSession {
+    _id: string;
+    user: User;
+    status: string;
+    checkInTime?: string;
+    skippedTime?: string;
+    entryTime?: string;
+    exitTime?: string;
+  };
+
+  export interface AggEvent {
+    _id: string;
+    name: string;
+    logoUrl: string;
+    date: string;
+    waiting: AggSession[];
+    completed: AggSession[];
+    skipped: AggSession[];
+  };
+
   export interface TextbeltResponseType {
     success: boolean,
     quotaRemaining?: number,

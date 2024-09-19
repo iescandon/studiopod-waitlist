@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { UserRequest, Event, Session, UpdateSessionReason, SendMessageReason, StatusType, TextbeltResponseType, User } from "@/types";
+import { AggEvent, Event, Session, UpdateSessionReason, SendMessageReason, StatusType, TextbeltResponseType } from "@/types";
 
 export const getEvents = async () => {
   const response: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/events`);
@@ -15,7 +15,7 @@ export const getEventById = async (eventId: string) => {
 
 export const getEventWithUserSessions = async (eventId: string) => {
     const response: AxiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/aggregators/events/${eventId}`);
-    const event: Event = response.data;
+    const event: AggEvent = response.data;
     return event;
 };
 

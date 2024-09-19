@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getEvents } from "@/utils"
 
 export default async function Home() {
@@ -5,7 +6,9 @@ export default async function Home() {
   return (
     <ul>
       {events.map((event) => (
-        <li key={event._id}>{event.name}-{event._id}</li>
+        <Link href={`/${event._id}`}>
+            <li key={event._id}>{event.name}</li>
+        </Link>
       ))}
     </ul>
   )
