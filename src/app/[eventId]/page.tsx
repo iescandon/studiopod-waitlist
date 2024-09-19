@@ -19,7 +19,7 @@ console.log(event);
       <p>{event.date}</p>
       <ul>
       {event?.waiting?.map((session: AggSession) => (
-            <li key={session._id}>{session.user.name}</li>
+          <li key={session._id}>{session.user.name}</li>
       ))}
     </ul>
     </main>

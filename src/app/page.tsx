@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <ul>
       {events.map((event) => (
-        <Link href={`/${event._id}`}>
+        <Link key={event._id} href={`/${event._id}`}>
             <li key={event._id}>{event.name}</li>
         </Link>
       ))}
