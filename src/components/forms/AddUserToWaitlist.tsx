@@ -59,7 +59,7 @@ export function AddUserToWaitlistForm({ eventId }: AddUserToWaitlistFormProps) {
     <>
     {!isFormSubmitted ? 
     <>
-    <p className="pb-4 text-2xl">Join the waitlist!</p>
+    <Typography className="pb-4 text-2xl" component="div" variant="h5">Join the waitlist!</Typography>
     {/* https://stackoverflow.com/questions/78576703/pass-variable-into-server-action-form-nextjs-14 */}
     <form action={formAction} className="flex flex-col justify-center items-center">
       <div className="space-y-4 flex flex-col items-center">

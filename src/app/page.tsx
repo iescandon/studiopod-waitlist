@@ -1,15 +1,18 @@
 import Link from 'next/link'
 import { getEvents } from "@/utils"
+import { Typography } from '@mui/material';
 
 export default async function Home() {
   const events = await getEvents();
   return (
+    <div className="p-16">
     <ul>
       {events.map((event) => (
         <Link key={event._id} href={`/${event._id}`}>
-            <li key={event._id}>{event.name}</li>
+            <Typography key={event._id} component="div" variant="h5">{event.name}</Typography>
         </Link>
       ))}
     </ul>
+    </div>
   )
 }
