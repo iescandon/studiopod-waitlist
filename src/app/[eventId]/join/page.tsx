@@ -11,8 +11,8 @@ export async function generateStaticParams() {
 export default async function Join({ params }: { params: { eventId: string } }) {
   const event = await getEventById(params.eventId);
   return (
-    <div className="w-full flex flex-col justify-center items-center p-16">
-      <img src={event.logoUrl} alt="Studio Pod Logo" className="w-full md:max-w-[400px] lg:max-w-[500px] pb-16" />
+    <div className="w-full flex flex-col justify-center items-center p-4 md:px-16">
+      <img src={event.logoUrl} alt="Studio Pod Logo" className="w-full max-w-[600px] p-8 md:p-16" />
       <AddUserToWaitlistForm eventId={params.eventId} />
     </div>
   )

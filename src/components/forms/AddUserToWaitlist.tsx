@@ -75,15 +75,15 @@ export function AddUserToWaitlistForm({ eventId }: AddUserToWaitlistFormProps) {
     </form>
     </>
     : <div className="text-center space-y-4">
-      <Typography component="div" variant="h5">{state.message}</Typography>
+      <Typography className="pb-8 md:pb-4" component="div" variant="h5">{state.message}</Typography>
       {
         state.statusCode === 201 ? 
         <Link href={`/${eventId}`}>
-        <Typography
-        className="font-extrabold underline"
-        variant="subtitle1"
-        component="div"
-        sx={{ color: '#d4ac7c' }}>View waitlist here</Typography></Link> : <Button onClick={resetForm}>Reset Form</Button>
+           <Button sx={{ fontWeight: 700 }} variant="contained" className="w-[200px]">
+             View waitlist here
+           </Button>
+        </Link> 
+        : <Button sx={{ fontWeight: 700 }} variant="contained" className="w-[200px]" onClick={resetForm}>Reset Form</Button>
         
       }
     </div>
