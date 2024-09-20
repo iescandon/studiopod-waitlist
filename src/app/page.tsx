@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { getEvents } from "@/utils"
 import { Typography } from '@mui/material';
 
+export const revalidate = 1;
+
 export default async function Home() {
   const events = await getEvents();
   return (
