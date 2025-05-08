@@ -1,6 +1,6 @@
 # StudioPod Waitlist
 
-A queue management app built with Next.js, TypeScript, MongoDB, Mongoose, MUI, and Tailwind CSS, created for an ALPFA Houston event I helped lead as a board member. Designed to streamline access to the automated headshot booth during a live fireside chat with StudioPod’s founders. Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included an admin interface for booth attendants to manage the queue efficiently without disrupting the main event. 
+A full-stack queue management app built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose. Designed to streamline access to an automated headshot booth, StudioPod, without disrupting a concurrent live fireside chat with StudioPod’s founders. Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included an admin interface for booth attendants to manage the queue efficiently without disrupting the main event. 
 
 https://studiopod-waitlist.vercel.app/
 
