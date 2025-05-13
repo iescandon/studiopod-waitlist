@@ -4,7 +4,7 @@ A mobile-responsive full-stack waitlist application that optimizes access to Stu
 
 Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included a photo booth attendant interface to manage the queue efficiently. 
 
-> Built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose.
+Built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose.
 
 https://studiopod-waitlist.vercel.app/
 
