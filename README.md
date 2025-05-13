@@ -4,6 +4,8 @@ A full-stack queue management app built with Next.js, TypeScript, Tailwind CSS, 
 
 https://studiopod-waitlist.vercel.app/
 
+<img width="1709" alt="Screenshot 2025-05-12 at 7 26 56 PM" src="https://github.com/user-attachments/assets/43429c83-2180-40eb-a7e2-35908fb3d11c" />
+
 ## To Test the Waitlist
 1. Join the [test queue](https://studiopod-waitlist.vercel.app/93567111-eda7-4845-94b9-e7c64770bd5a/join)
 2. [Normal view](https://studiopod-waitlist.vercel.app/93567111-eda7-4845-94b9-e7c64770bd5a) of waitlist
@@ -14,4 +16,3 @@ https://studiopod-waitlist.vercel.app/
    - The trash icon marks a no-show, removing the attendee from the list and sending a notification that they have been skipped.
 4. Click on icons and see the status changes and receive text messages. If you don’t receive messages it’s possibly because I ran out of textbelt credits.
 
-<img width="1709" alt="Screenshot 2025-05-12 at 7 26 56 PM" src="https://github.com/user-attachments/assets/43429c83-2180-40eb-a7e2-35908fb3d11c" />
