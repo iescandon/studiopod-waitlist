@@ -1,6 +1,6 @@
 # StudioPod Waitlist
 
-A full-stack queue management app built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose. Designed to streamline access to an automated headshot booth, StudioPod, without disrupting a concurrent live fireside chat with StudioPod’s founders. Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included an admin interface for booth attendants to manage the queue efficiently without disrupting the main event. 
+A mobile-responsive full-stack waitlist application that optimizes access to StudioPod, an automated headshot booth, by eliminating the need to wait in line. Designed to streamline access to the StudioPod without disrupting a concurrent live fireside chat with StudioPod’s founders. Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included a photo booth attendant interface to manage the queue efficiently. Built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose.
 
 https://studiopod-waitlist.vercel.app/
 
