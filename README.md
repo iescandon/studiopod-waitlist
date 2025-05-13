@@ -17,3 +17,4 @@ https://studiopod-waitlist.vercel.app/
 4. Click on icons and see the status changes and receive text messages. If you don’t receive messages it’s possibly because I ran out of textbelt credits.
 
 <img width="1709" alt="Screenshot 2025-05-12 at 7 26 56 PM" src="https://github.com/user-attachments/assets/43429c83-2180-40eb-a7e2-35908fb3d11c" />
+![IMG_2350](https://github.com/user-attachments/assets/f6236298-0db2-4e08-b627-36210851240a)
