@@ -13,3 +13,5 @@ https://studiopod-waitlist.vercel.app/
    - The checkmark icon indicates the session is complete and the attendee can be removed from the list.
    - The trash icon marks a no-show, removing the attendee from the list and sending a notification that they have been skipped.
 4. Click on icons and see the status changes and receive text messages. If you don’t receive messages it’s possibly because I ran out of textbelt credits.
+
+<img width="1709" alt="Screenshot 2025-05-12 at 7 26 56 PM" src="https://github.com/user-attachments/assets/43429c83-2180-40eb-a7e2-35908fb3d11c" />
