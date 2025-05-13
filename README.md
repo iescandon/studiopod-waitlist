@@ -2,7 +2,9 @@
 
 A mobile-responsive full-stack waitlist application that optimizes access to StudioPod, an automated headshot booth, by eliminating the need to wait in line. Built specifically for an ALPFA event I organized as Director of Corporate Events, the app streamlined StudioPod access without disrupting a concurrent live fireside chat with its founders.
 
-Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included a photo booth attendant interface to manage the queue efficiently. Built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose.
+Attendees scanned a QR code to join the virtual waitlist, view real-time queue updates, and receive SMS alerts (via Textbelt). Included a photo booth attendant interface to manage the queue efficiently. 
+
+> Built with Next.js, TypeScript, Tailwind CSS, MUI, MongoDB, and Mongoose.
 
 https://studiopod-waitlist.vercel.app/
 
